@@ -11,7 +11,7 @@ import {
   compressPdf,
   formatFileSize,
   isPdfFile,
-} from "./compressPdf";
+} from "./compressPdfUtils";
 
 import "./compressPdf.css";
 
@@ -133,7 +133,7 @@ export default function CompressPdf() {
     <main className="compress-pdf-page">
       <section className="compress-pdf-hero">
         <a href="/" className="compress-pdf-back">
-          ← Back to Utility
+          Ã¢â€ Â Back to Utility
         </a>
 
         <div className="compress-pdf-heading">
@@ -174,7 +174,7 @@ export default function CompressPdf() {
 
           {!file ? (
             <>
-              <div className="compress-pdf-icon">↑</div>
+              <div className="compress-pdf-icon">Ã¢â€ â€˜</div>
 
               <h2>Drop your PDF here</h2>
 
@@ -204,7 +204,7 @@ export default function CompressPdf() {
                 }}
                 aria-label="Remove selected PDF"
               >
-                ×
+                Ãƒâ€”
               </button>
             </div>
           )}
@@ -226,7 +226,7 @@ export default function CompressPdf() {
             <strong>Compression complete</strong>
 
             <span>
-              {formatFileSize(file.size)} → {formatFileSize(compressedSize)}
+              {formatFileSize(file.size)} Ã¢â€ â€™ {formatFileSize(compressedSize)}
             </span>
 
             {compressionPercentage !== null && (
