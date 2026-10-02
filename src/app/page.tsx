@@ -13,7 +13,7 @@ const categories = [
       {
         name: "Compress PDF",
         status: "Ready",
-        href: "/tools/pdf/compress-pdf",
+        href: "/Utility-/tools/pdf/compress-pdf",
       },
       {
         name: "Merge PDF",
@@ -150,7 +150,7 @@ const popularTools = [
   {
     name: "Compress PDF",
     status: "Ready",
-    href: "/tools/pdf/compress-pdf",
+    href: "/Utility-/tools/pdf/compress-pdf",
   },
   {
     name: "Compress Image",
@@ -215,7 +215,7 @@ export default function Home() {
         </p>
 
         <div className="search-box">
-          <span className="search-icon">⌕</span>
+          <span className="search-icon">âŒ•</span>
 
           <input
             value={search}
@@ -224,7 +224,7 @@ export default function Home() {
             aria-label="Search tools"
           />
 
-          <span className="search-key">⌘ K</span>
+          <span className="search-key">âŒ˜ K</span>
         </div>
 
         <div className="suggestions">
@@ -272,7 +272,7 @@ export default function Home() {
 
                 <span className="popular-name">{tool.name}</span>
 
-                <span className="popular-arrow">↗</span>
+                <span className="popular-arrow">â†—</span>
               </a>
             ) : (
               <button
@@ -286,7 +286,7 @@ export default function Home() {
 
                 <span className="popular-name">{tool.name}</span>
 
-                <span className="popular-arrow">↗</span>
+                <span className="popular-arrow">â†—</span>
               </button>
             )
           )}
@@ -311,7 +311,7 @@ export default function Home() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="category-arrow">↗</span>
+                <span className="category-arrow">â†—</span>
               </div>
 
               <div className="category-title-row">
@@ -344,7 +344,7 @@ export default function Home() {
                         {tool.status}
                       </span>
 
-                      <span>→</span>
+                      <span>â†’</span>
                     </a>
                   ) : (
                     <div key={tool.name} className="tool">
@@ -354,7 +354,7 @@ export default function Home() {
                         {tool.status}
                       </span>
 
-                      <span>→</span>
+                      <span>â†’</span>
                     </div>
                   )
                 )}
@@ -362,7 +362,7 @@ export default function Home() {
 
               <button className="view-all">
                 View all {category.name} tools
-                <span>→</span>
+                <span>â†’</span>
               </button>
             </article>
           ))}
@@ -396,7 +396,7 @@ export default function Home() {
 
           <button className="dark-button">
             Suggest a tool
-            <span>→</span>
+            <span>â†’</span>
           </button>
         </div>
 
@@ -434,7 +434,7 @@ export default function Home() {
 
         <button className="dark-button">
           Support Utility
-          <span>→</span>
+          <span>â†’</span>
         </button>
       </section>
 

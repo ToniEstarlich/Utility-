@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 
 
 export default function Header() {
   return (
     <header className="header">
-      <a href="/" className="brand">
+      <a href="/Utility-/" className="brand">
         Utility
       </a>
 
@@ -12,7 +12,7 @@ export default function Header() {
         <a href="#tools">Tools</a>
         <a href="#popular">Popular</a>
         <a href="#about">About</a>
-        <a href="/documentation/index.html">Documentation</a>
+        <a href="/Utility-/documentation/index.html">Documentation</a>
       </nav>
 
       <a href="#support" className="header-button">
