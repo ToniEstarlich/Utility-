@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility — Architecture</title>
+
+  <style>
+    :root {
+      --background: #edf1f0;
+      --surface: rgba(255, 255, 255, 0.58);
+      --text: #111615;
+      --text-soft: #4f5855;
+      --muted: #7c8582;
+      --accent: #dfff45;
+
+      --html: #f97316;
+      --js: #facc15;
+      --css: #a855f7;
+      --python: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1050px, calc(100% - 40px));
+      margin: auto;
+      padding: 30px 0 80px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 18px;
+      z-index: 10;
+
+      min-height: 64px;
+      padding: 0 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.52);
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 14px 40px rgba(32, 39, 37, 0.07),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 100px 0 60px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(223, 255, 69, 0.55);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 20px 0 0;
+      font-size: clamp(48px, 8vw, 84px);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin-top: 24px;
+      color: var(--text-soft);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .section {
+      margin-top: 26px;
+      padding: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow:
+        12px 12px 30px rgba(32, 39, 37, 0.06),
+        -10px -10px 28px rgba(255, 255, 255, 0.82);
+    }
+
+    .section h2 {
+      margin: 0 0 20px;
+      font-size: 25px;
+      letter-spacing: -0.04em;
+    }
+
+    .section p {
+      color: var(--text-soft);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .architecture {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .node {
+      width: min(600px, 100%);
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow:
+        6px 6px 16px rgba(32, 39, 37, 0.05),
+        -6px -6px 16px rgba(255, 255, 255, 0.8);
+    }
+
+    .node strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .node span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .tool {
+      width: min(700px, 100%);
+      padding: 26px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+    }
+
+    .tool-title {
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .layers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .layer {
+      padding: 16px 10px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .html {
+      background: rgba(249, 115, 22, 0.18);
+      color: #c2410c;
+    }
+
+    .js {
+      background: rgba(250, 204, 21, 0.22);
+      color: #a16207;
+    }
+
+    .css {
+      background: rgba(168, 85, 247, 0.18);
+      color: #7e22ce;
+    }
+
+    .python {
+      background: rgba(34, 197, 94, 0.18);
+      color: #15803d;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .legend-item {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .legend-item strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .legend-item span {
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .tree {
+      margin: 0;
+      padding: 24px;
+      overflow-x: auto;
+      border-radius: 18px;
+      background: rgba(17, 22, 21, 0.94);
+      color: #edf1f0;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer {
+      margin-top: 70px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 24px, 1050px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .layers,
+      .legend {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <nav class="nav">
+      <a href="../" class="brand">Utility</a>
+
+      <div class="nav-links">
+        <a href="index.html">Documentation</a>
+        <a href="design.html">Design</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <span class="eyebrow">Architecture</span>
+
+      <h1>Small tools.<br>Clear structure.</h1>
+
+      <p>
+        Utility is organized so that every tool can contain its own interface,
+        logic, styles, and Python processing without becoming dependent on a
+        large central system.
+      </p>
+    </header>
+
+    <section class="section">
+      <h2>How a tool works</h2>
+
+      <div class="architecture">
+
+        <div class="node">
+          <strong>Utility Tool</strong>
+          <span>The user interacts with a single focused tool.</span>
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="tool">
+
+          <div class="tool-title">
+            Compress PDF
+          </div>
+
+          <div class="layers">
+
+            <div class="layer html">
+              HTML
+            </div>
+
+            <div class="layer js">
+              JavaScript
+            </div>
+
+            <div class="layer css">
+              CSS
+            </div>
+
+            <div class="layer python">
+              Python
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="arrow">↓</div>
+
+        <div class="node">
+          <strong>Result</strong>
+          <span>The processed file or result is returned to the user.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>What each layer does</h2>
+
+      <div class="legend">
+
+        <div class="legend-item">
+          <strong style="color:#c2410c;">HTML</strong>
+          <span>The structure and visible interface of the tool.</span>
+        </div>
+
+        <div class="legend-item">
+          <strong style="color:#a16207;">JavaScript</strong>
+          <span>The interaction and client-side behavior.</span>
+        </div>
+
+        <div class="legend-item">
+          <strong style="color:#7e22ce;">CSS</strong>
+          <span>The visual design, layout, spacing, and states.</span>
+        </div>
+
+        <div class="legend-item">
+          <strong style="color:#15803d;">Python</strong>
+          <span>The heavier processing and backend logic.</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Tool-based architecture</h2>
+
+      <p>
+        Each Utility tool owns its own files. This keeps tools understandable,
+        independent, and easier to develop or replace.
+      </p>
+
+      <pre class="tree">Utility/
+└── src/
+    └── app/
+        └── tools/
+            ├── pdf/
+            │   ├── compress-pdf/
+            │   │   ├── page.tsx
+            │   │   ├── CompressPdf.tsx
+            │   │   ├── compressPdf.ts
+            │   │   ├── compressPdf.css
+            │   │   └── backend/
+            │   │       ├── main.py
+            │   │       └── compress.py
+            │   │
+            │   └── merge-pdf/
+            │       └── backend/
+            │           ├── main.py
+            │           └── merge.py
+            │
+            └── images/
+                └── compress-image/
+                    └── backend/
+                        ├── main.py
+                        └── compress.py</pre>
+    </section>
+
+    <section class="section">
+      <h2>Simple principle</h2>
+
+      <p>
+        A developer should be able to open a tool folder and immediately
+        understand everything that belongs to that tool.
+      </p>
+
+      <p>
+        The architecture stays modular at the tool level while the production
+        backend can still run as a single FastAPI service when Utility is deployed.
+      </p>
+    </section>
+
+    <footer>
+      <a href="index.html">← Back to documentation</a>
+    </footer>
+
+  </div>
+</body>
+</html>

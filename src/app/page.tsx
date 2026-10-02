@@ -1,69 +1,444 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+
+const categories = [
+  {
+    name: "PDF",
+    description: "Documents and PDF files",
+    status: "In progress",
+    tools: [
+      {
+        name: "Compress PDF",
+        status: "Ready",
+        href: "/tools/pdf/compress-pdf",
+      },
+      {
+        name: "Merge PDF",
+        status: "Coming soon",
+      },
+      {
+        name: "Split PDF",
+        status: "Coming soon",
+      },
+      {
+        name: "PDF to Word",
+        status: "Coming soon",
+      },
+    ],
+  },
+  {
+    name: "Images",
+    description: "Resize, convert and optimize",
+    status: "Coming soon",
+    tools: [
+      {
+        name: "Compress Image",
+        status: "Coming soon",
+      },
+      {
+        name: "Resize Image",
+        status: "Coming soon",
+      },
+      {
+        name: "JPG to PNG",
+        status: "Coming soon",
+      },
+      {
+        name: "PNG to JPG",
+        status: "Coming soon",
+      },
+    ],
+  },
+  {
+    name: "Text",
+    description: "Write, clean and transform text",
+    status: "Coming soon",
+    tools: [
+      {
+        name: "Word Counter",
+        status: "Coming soon",
+      },
+      {
+        name: "Text Cleaner",
+        status: "Coming soon",
+      },
+      {
+        name: "Case Converter",
+        status: "Coming soon",
+      },
+      {
+        name: "Text Compare",
+        status: "Coming soon",
+      },
+    ],
+  },
+  {
+    name: "Developer",
+    description: "Everyday developer utilities",
+    status: "Coming soon",
+    tools: [
+      {
+        name: "JSON Formatter",
+        status: "Coming soon",
+      },
+      {
+        name: "JSON Validator",
+        status: "Coming soon",
+      },
+      {
+        name: "Base64 Encoder",
+        status: "Coming soon",
+      },
+      {
+        name: "UUID Generator",
+        status: "Coming soon",
+      },
+    ],
+  },
+  {
+    name: "Calculators",
+    description: "Quick everyday calculations",
+    status: "Coming soon",
+    tools: [
+      {
+        name: "Percentage",
+        status: "Coming soon",
+      },
+      {
+        name: "VAT Calculator",
+        status: "Coming soon",
+      },
+      {
+        name: "Tip Calculator",
+        status: "Coming soon",
+      },
+      {
+        name: "Unit Converter",
+        status: "Coming soon",
+      },
+    ],
+  },
+  {
+    name: "Generators",
+    description: "Create useful things instantly",
+    status: "Coming soon",
+    tools: [
+      {
+        name: "QR Code",
+        status: "Coming soon",
+      },
+      {
+        name: "Password Generator",
+        status: "Coming soon",
+      },
+      {
+        name: "Lorem Ipsum",
+        status: "Coming soon",
+      },
+      {
+        name: "Favicon Generator",
+        status: "Coming soon",
+      },
+    ],
+  },
+];
+
+const popularTools = [
+  {
+    name: "Compress PDF",
+    status: "Ready",
+    href: "/tools/pdf/compress-pdf",
+  },
+  {
+    name: "Compress Image",
+    status: "Coming soon",
+  },
+  {
+    name: "Word Counter",
+    status: "Coming soon",
+  },
+  {
+    name: "JSON Formatter",
+    status: "Coming soon",
+  },
+  {
+    name: "QR Code Generator",
+    status: "Coming soon",
+  },
+  {
+    name: "Password Generator",
+    status: "Coming soon",
+  },
+];
 
 export default function Home() {
+  const [search, setSearch] = useState("");
+
+  const query = search.trim().toLowerCase();
+
+  const filteredCategories = categories
+    .map((category) => ({
+      ...category,
+      tools: category.tools.filter((tool) =>
+        tool.name.toLowerCase().includes(query)
+      ),
+    }))
+    .filter(
+      (category) =>
+        !query ||
+        category.name.toLowerCase().includes(query) ||
+        category.tools.length > 0
+    );
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="site">
+      <Header />
+
+      <section className="hero">
+        <div className="eyebrow">
+          <span className="status-dot" />
+          Free online tools
+        </div>
+
+        <h1>
+          The little tools
+          <br />
+          <span>you need, all in one place.</span>
+        </h1>
+
+        <p className="hero-description">
+          Simple utilities for files, images, text, calculations and more.
+          No account. No unnecessary complexity.
+        </p>
+
+        <div className="search-box">
+          <span className="search-icon">⌕</span>
+
+          <input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="What are you trying to do?"
+            aria-label="Search tools"
+          />
+
+          <span className="search-key">⌘ K</span>
+        </div>
+
+        <div className="suggestions">
+          <span>Popular:</span>
+
+          <button onClick={() => setSearch("Compress PDF")}>
+            Compress a PDF
+          </button>
+
+          <button onClick={() => setSearch("Compress Image")}>
+            Resize an image
+          </button>
+
+          <button onClick={() => setSearch("JSON")}>
+            Format JSON
+          </button>
+
+          <button onClick={() => setSearch("VAT")}>
+            Calculate VAT
+          </button>
+        </div>
+      </section>
+
+      <section id="popular" className="content-section popular-section">
+        <div className="section-heading">
+          <div>
+            <span className="section-label">POPULAR</span>
+            <h2>What people use Utility for</h2>
+          </div>
+
+          <p>Quick access to the most useful everyday tools.</p>
+        </div>
+
+        <div className="popular-grid">
+          {popularTools.map((tool, index) =>
+            tool.href ? (
+              <a
+                key={tool.name}
+                href={tool.href}
+                className="popular-item"
+              >
+                <span className="popular-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span className="popular-name">{tool.name}</span>
+
+                <span className="popular-arrow">↗</span>
+              </a>
+            ) : (
+              <button
+                key={tool.name}
+                className="popular-item"
+                onClick={() => setSearch(tool.name)}
+              >
+                <span className="popular-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span className="popular-name">{tool.name}</span>
+
+                <span className="popular-arrow">↗</span>
+              </button>
+            )
+          )}
+        </div>
+      </section>
+
+      <section id="tools" className="content-section">
+        <div className="section-heading">
+          <div>
+            <span className="section-label">EXPLORE</span>
+            <h2>All tools</h2>
+          </div>
+
+          <p>Everything is designed to do one thing well.</p>
+        </div>
+
+        <div className="category-grid">
+          {filteredCategories.map((category, index) => (
+            <article className="category-card" key={category.name}>
+              <div className="category-top">
+                <span className="category-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                <span className="category-arrow">↗</span>
+              </div>
+
+              <div className="category-title-row">
+                <h3>{category.name}</h3>
+
+                <span
+                  className={`category-status ${
+                    category.status === "In progress"
+                      ? "category-status-active"
+                      : "category-status-soon"
+                  }`}
+                >
+                  {category.status}
+                </span>
+              </div>
+
+              <p>{category.description}</p>
+
+              <div className="tool-list">
+                {category.tools.map((tool) =>
+                  tool.href ? (
+                    <a
+                      key={tool.name}
+                      href={tool.href}
+                      className="tool"
+                    >
+                      <span>{tool.name}</span>
+
+                      <span className="tool-status-ready">
+                        {tool.status}
+                      </span>
+
+                      <span>→</span>
+                    </a>
+                  ) : (
+                    <div key={tool.name} className="tool">
+                      <span>{tool.name}</span>
+
+                      <span className="tool-status-soon">
+                        {tool.status}
+                      </span>
+
+                      <span>→</span>
+                    </div>
+                  )
+                )}
+              </div>
+
+              <button className="view-all">
+                View all {category.name} tools
+                <span>→</span>
+              </button>
+            </article>
+          ))}
+        </div>
+
+        {filteredCategories.length === 0 && (
+          <div className="empty-state">
+            <h3>No tool found</h3>
+
+            <p>
+              Try another search. We are constantly adding new utilities.
+            </p>
+          </div>
+        )}
+      </section>
+
+      <section className="idea-section">
+        <div className="idea-content">
+          <span className="section-label">BUILT AROUND YOU</span>
+
+          <h2>
+            Can&apos;t find the tool
+            <br />
+            you&apos;re looking for?
+          </h2>
+
+          <p>
+            Utility is meant to grow with the things people actually need.
+            Tell us what you wish existed and we may build it next.
+          </p>
+
+          <button className="dark-button">
+            Suggest a tool
+            <span>→</span>
+          </button>
+        </div>
+
+        <div className="idea-visual">
+          <div className="idea-card idea-card-one">
+            <span>+</span>
+            Image compressor
+          </div>
+
+          <div className="idea-card idea-card-two">
+            <span>+</span>
+            Markdown converter
+          </div>
+
+          <div className="idea-card idea-card-three">
+            <span>+</span>
+            CSV cleaner
+          </div>
+
+          <div className="idea-circle">?</div>
+        </div>
+      </section>
+
+      <section id="support" className="support-section">
+        <div>
+          <span className="section-label">COMMUNITY POWERED</span>
+
+          <h2>Keep useful things free.</h2>
+
+          <p>
+            Utility is free to use. If it saves you time, you can help us
+            maintain the project and build more tools.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+        <button className="dark-button">
+          Support Utility
+          <span>→</span>
+        </button>
+      </section>
+
+      <Footer />
+    </main>
   );
 }

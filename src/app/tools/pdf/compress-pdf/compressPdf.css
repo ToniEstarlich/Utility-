@@ -1,0 +1,317 @@
+.compress-pdf-page {
+  min-height: 100vh;
+  padding: 120px 24px 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.compress-pdf-hero {
+  width: min(760px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.compress-pdf-back {
+  align-self: flex-start;
+  margin-bottom: 64px;
+  color: #5d6663;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.compress-pdf-back:hover {
+  color: #111615;
+}
+
+.compress-pdf-heading {
+  max-width: 620px;
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.compress-pdf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  margin-bottom: 18px;
+  border-radius: 999px;
+  background: rgba(223, 255, 69, 0.42);
+  color: #111615;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.compress-pdf-heading h1 {
+  margin: 0;
+  color: #111615;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.compress-pdf-heading p {
+  max-width: 520px;
+  margin: 22px auto 0;
+  color: #5d6663;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.compress-pdf-dropzone {
+  width: 100%;
+  min-height: 340px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed rgba(17, 22, 21, 0.18);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow:
+    14px 14px 34px rgba(32, 39, 37, 0.06),
+    -10px -10px 28px rgba(255, 255, 255, 0.82),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.compress-pdf-dropzone:hover,
+.compress-pdf-dropzone.is-dragging {
+  transform: translateY(-2px);
+  border-color: rgba(17, 22, 21, 0.32);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.compress-pdf-dropzone.has-file {
+  cursor: default;
+}
+
+.compress-pdf-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #dfff45;
+  color: #111615;
+  font-size: 28px;
+  font-weight: 800;
+  box-shadow:
+    7px 7px 16px rgba(31, 39, 36, 0.08),
+    -6px -6px 14px rgba(255, 255, 255, 0.85);
+}
+
+.compress-pdf-dropzone h2 {
+  margin: 0;
+  color: #111615;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+
+.compress-pdf-dropzone > p {
+  margin: 10px 0 0;
+  color: #6b7471;
+  font-size: 14px;
+}
+
+.compress-pdf-hint {
+  margin-top: 24px;
+  color: #8a9290;
+  font-size: 12px;
+}
+
+.compress-pdf-file {
+  width: min(520px, 100%);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    5px 5px 14px rgba(31, 39, 36, 0.06),
+    -5px -5px 14px rgba(255, 255, 255, 0.8);
+}
+
+.compress-pdf-file-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #dfff45;
+  color: #111615;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.compress-pdf-file-info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  text-align: left;
+}
+
+.compress-pdf-file-info strong {
+  max-width: 100%;
+  overflow: hidden;
+  color: #111615;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compress-pdf-file-info span {
+  color: #7c8582;
+  font-size: 12px;
+}
+
+.compress-pdf-remove {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 12px;
+  background: rgba(237, 241, 240, 0.9);
+  color: #5d6663;
+  font-size: 22px;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.compress-pdf-remove:hover {
+  background: rgba(17, 22, 21, 0.08);
+  color: #111615;
+}
+
+.compress-pdf-button {
+  min-height: 52px;
+  margin-top: 24px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 16px;
+  background: #dfff45;
+  color: #111615;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow:
+    7px 7px 16px rgba(31, 39, 36, 0.08),
+    -7px -7px 16px rgba(255, 255, 255, 0.82);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.compress-pdf-button:hover {
+  transform: translateY(-2px);
+}
+
+.compress-pdf-button:active {
+  transform: translateY(0);
+  box-shadow:
+    inset 4px 4px 9px rgba(31, 39, 36, 0.08),
+    inset -4px -4px 9px rgba(255, 255, 255, 0.8);
+}
+
+.compress-pdf-privacy {
+  margin: 22px 0 0;
+  color: #858e8b;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .compress-pdf-page {
+    padding: 110px 16px 60px;
+  }
+
+  .compress-pdf-back {
+    margin-bottom: 48px;
+  }
+
+  .compress-pdf-heading {
+    margin-bottom: 30px;
+  }
+
+  .compress-pdf-heading h1 {
+    font-size: 48px;
+  }
+
+  .compress-pdf-heading p {
+    font-size: 15px;
+  }
+
+  .compress-pdf-dropzone {
+    min-height: 300px;
+    padding: 28px 20px;
+    border-radius: 22px;
+  }
+
+  .compress-pdf-file {
+    padding: 14px;
+  }
+}
+.compress-pdf-result {
+  margin-top: 22px;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    5px 5px 14px rgba(31, 39, 36, 0.05),
+    -5px -5px 14px rgba(255, 255, 255, 0.78);
+  color: #5d6663;
+  font-size: 13px;
+}
+
+.compress-pdf-result strong {
+  color: #111615;
+}
+
+.compress-pdf-result span:last-child {
+  color: #111615;
+  font-weight: 800;
+}
+
+.compress-pdf-error {
+  margin: 18px 0 0;
+  color: #b42318;
+  font-size: 13px;
+  text-align: center;
+}
+
+.compress-pdf-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}

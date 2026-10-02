@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility — Documentation</title>
+
+  <style>
+    :root {
+      --background: #edf1f0;
+      --surface: rgba(255, 255, 255, 0.58);
+      --surface-strong: rgba(255, 255, 255, 0.78);
+      --text: #111615;
+      --text-soft: #4f5855;
+      --muted: #7c8582;
+      --accent: #dfff45;
+      --border: rgba(255, 255, 255, 0.82);
+      --shadow: rgba(32, 39, 37, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 32px 0 80px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 18px;
+      z-index: 10;
+
+      min-height: 66px;
+      padding: 0 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      border: 1px solid var(--border);
+      border-radius: 20px;
+
+      background: rgba(255, 255, 255, 0.52);
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 14px 40px var(--shadow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .back {
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 120px 0 70px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 13px;
+      border-radius: 999px;
+      background: rgba(223, 255, 69, 0.55);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 22px 0 0;
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 0.94;
+      letter-spacing: -0.07em;
+    }
+
+    .hero p {
+      max-width: 580px;
+      margin: 24px auto 0;
+      color: var(--text-soft);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: var(--surface);
+      box-shadow:
+        12px 12px 30px var(--shadow),
+        -10px -10px 28px rgba(255, 255, 255, 0.82),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
+
+      transition: transform 180ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card-number {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--accent);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .card h2 {
+      margin: 28px 0 10px;
+      font-size: 25px;
+      letter-spacing: -0.04em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      margin-top: 26px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 80px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 24px, 1100px);
+      }
+
+      .hero {
+        padding: 90px 0 50px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <nav class="nav">
+      <a href="../" class="brand">Utility</a>
+      <a href="../" class="back">← Back to Utility</a>
+    </nav>
+
+    <header class="hero">
+      <span class="eyebrow">Project Documentation</span>
+
+      <h1>Utility</h1>
+
+      <p>
+        A visual and technical reference for the design language,
+        architecture, and principles behind Utility.
+      </p>
+    </header>
+
+    <main class="cards">
+
+      <a href="design.html" class="card">
+        <div class="card-number">01</div>
+
+        <h2>Design System</h2>
+
+        <p>
+          Colors, typography, visual language, spacing, surfaces,
+          buttons, glass effects, and the writing style used throughout Utility.
+        </p>
+
+        <span class="card-link">
+          Explore design →
+        </span>
+      </a>
+
+      <a href="architecture.html" class="card">
+        <div class="card-number">02</div>
+
+        <h2>Architecture</h2>
+
+        <p>
+          A simple visual explanation of how Utility is structured,
+          how the frontend connects to Python, and how each tool remains modular.
+        </p>
+
+        <span class="card-link">
+          Explore architecture →
+        </span>
+      </a>
+
+    </main>
+
+    <footer>
+      Utility — One place for every little task.
+    </footer>
+
+  </div>
+</body>
+</html>
