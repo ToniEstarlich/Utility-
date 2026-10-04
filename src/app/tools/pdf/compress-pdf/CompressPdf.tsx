@@ -133,7 +133,7 @@ export default function CompressPdf() {
     <main className="compress-pdf-page">
       <section className="compress-pdf-hero">
         <a href="/" className="compress-pdf-back">
-          Ã¢â€ Â Back to Utility
+          ÃƒÂ¢Ã¢â‚¬Â Ã‚Â Back to Utility
         </a>
 
         <div className="compress-pdf-heading">
@@ -174,7 +174,7 @@ export default function CompressPdf() {
 
           {!file ? (
             <>
-              <div className="compress-pdf-icon">Ã¢â€ â€˜</div>
+              <div className="compress-pdf-icon">ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬Ëœ</div>
 
               <h2>Drop your PDF here</h2>
 
@@ -204,7 +204,7 @@ export default function CompressPdf() {
                 }}
                 aria-label="Remove selected PDF"
               >
-                Ãƒâ€”
+                ÃƒÆ’Ã¢â‚¬â€
               </button>
             </div>
           )}
@@ -226,7 +226,7 @@ export default function CompressPdf() {
             <strong>Compression complete</strong>
 
             <span>
-              {formatFileSize(file.size)} Ã¢â€ â€™ {formatFileSize(compressedSize)}
+              {formatFileSize(file.size)} ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ {formatFileSize(compressedSize)}
             </span>
 
             {compressionPercentage !== null && (
