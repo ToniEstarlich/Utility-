@@ -132,7 +132,24 @@ export default function CompressPdf() {
   return (
     <main className="compress-pdf-page">
       <section className="compress-pdf-hero">
-        <a href="/Utility-/" className="compress-pdf-back">`r`n          &larr; Back to Utility`r`n        </a>
+        <a href="/Utility-/" className="compress-pdf-back">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M19 12H5M11 18L5 12L11 6"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>Back to Utility</span>
+        </a>
 
         <div className="compress-pdf-heading">
           <span className="compress-pdf-eyebrow">
@@ -172,7 +189,36 @@ export default function CompressPdf() {
 
           {!file ? (
             <>
-              <div className="compress-pdf-icon">ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“</div>
+              <div className="compress-pdf-icon">
+                <svg
+                  width="42"
+                  height="42"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 16V4"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M7 9L12 4L17 9"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M5 20H19"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
 
               <h2>Drop your PDF here</h2>
 
@@ -202,7 +248,20 @@ export default function CompressPdf() {
                 }}
                 aria-label="Remove selected PDF"
               >
-                ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M6 6L18 18M18 6L6 18"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </button>
             </div>
           )}
@@ -224,7 +283,8 @@ export default function CompressPdf() {
             <strong>Compression complete</strong>
 
             <span>
-              {formatFileSize(file.size)} ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ {formatFileSize(compressedSize)}
+              {formatFileSize(file.size)} to{" "}
+              {formatFileSize(compressedSize)}
             </span>
 
             {compressionPercentage !== null && (
