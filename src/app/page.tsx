@@ -174,6 +174,58 @@ const popularTools = [
   },
 ];
 
+function ArrowIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M7 17L17 7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M9 7H17V15"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="11"
+        cy="11"
+        r="6.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      />
+      <path
+        d="M16 16L21 21"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [search, setSearch] = useState("");
 
@@ -215,7 +267,9 @@ export default function Home() {
         </p>
 
         <div className="search-box">
-          <span className="search-icon">âŒ•</span>
+          <span className="search-icon">
+            <SearchIcon />
+          </span>
 
           <input
             value={search}
@@ -224,7 +278,7 @@ export default function Home() {
             aria-label="Search tools"
           />
 
-          <span className="search-key">âŒ˜ K</span>
+          <span className="search-key">? K</span>
         </div>
 
         <div className="suggestions">
@@ -272,7 +326,9 @@ export default function Home() {
 
                 <span className="popular-name">{tool.name}</span>
 
-                <span className="popular-arrow">â†—</span>
+                <span className="popular-arrow">
+                  <ArrowIcon />
+                </span>
               </a>
             ) : (
               <button
@@ -286,7 +342,9 @@ export default function Home() {
 
                 <span className="popular-name">{tool.name}</span>
 
-                <span className="popular-arrow">â†—</span>
+                <span className="popular-arrow">
+                  <ArrowIcon />
+                </span>
               </button>
             )
           )}
@@ -311,7 +369,9 @@ export default function Home() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                <span className="category-arrow">â†—</span>
+                <span className="category-arrow">
+                  <ArrowIcon />
+                </span>
               </div>
 
               <div className="category-title-row">
@@ -344,7 +404,9 @@ export default function Home() {
                         {tool.status}
                       </span>
 
-                      <span>â†’</span>
+                      <span>
+                        <ArrowIcon />
+                      </span>
                     </a>
                   ) : (
                     <div key={tool.name} className="tool">
@@ -354,7 +416,9 @@ export default function Home() {
                         {tool.status}
                       </span>
 
-                      <span>â†’</span>
+                      <span>
+                        <ArrowIcon />
+                      </span>
                     </div>
                   )
                 )}
@@ -362,7 +426,10 @@ export default function Home() {
 
               <button className="view-all">
                 View all {category.name} tools
-                <span>â†’</span>
+
+                <span>
+                  <ArrowIcon />
+                </span>
               </button>
             </article>
           ))}
@@ -396,7 +463,10 @@ export default function Home() {
 
           <button className="dark-button">
             Suggest a tool
-            <span>â†’</span>
+
+            <span>
+              <ArrowIcon />
+            </span>
           </button>
         </div>
 
@@ -434,7 +504,10 @@ export default function Home() {
 
         <button className="dark-button">
           Support Utility
-          <span>â†’</span>
+
+          <span>
+            <ArrowIcon />
+          </span>
         </button>
       </section>
 
